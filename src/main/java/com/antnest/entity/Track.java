@@ -44,7 +44,7 @@ public class Track {
             joinColumns = @JoinColumn(name = "track_id"),
             inverseJoinColumns = @JoinColumn(name = "playlist_id")
     )
-    @JsonManagedReference
+    @JsonBackReference
     private List<Playlist> playlists;
 
     public Track() {

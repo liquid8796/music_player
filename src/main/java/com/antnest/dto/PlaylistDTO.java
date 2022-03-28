@@ -12,7 +12,17 @@ public class PlaylistDTO {
 
     private boolean isPublic;
 
+    private long ownerId;
+
     public PlaylistDTO() {
+    }
+
+    public long getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(long ownerId) {
+        this.ownerId = ownerId;
     }
 
     public long getId() {

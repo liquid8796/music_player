@@ -58,12 +58,10 @@ public class Playlist {
     public Playlist() {
     }
 
-    public Playlist(String name, Genre genre, boolean isPublic, Date createdAt, Date updatedOn) {
+    public Playlist(String name, Genre genre, boolean isPublic) {
         this.name = name;
         this.genre = genre;
         this.isPublic = isPublic;
-        this.createdAt = createdAt;
-        this.updatedOn = updatedOn;
     }
 
     public long getId() {

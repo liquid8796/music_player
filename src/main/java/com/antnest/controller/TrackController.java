@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping("/api")
 public class TrackController {
 
-    private static final int size = 2;
+    private static final int size = 5;
 
     @Autowired
     private TrackService trackService;
