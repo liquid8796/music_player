@@ -1,5 +1,7 @@
 package com.antnest.dto;
 
+import com.antnest.entity.User;
+
 import javax.persistence.Column;
 
 public class TrackDTO {
@@ -8,7 +10,9 @@ public class TrackDTO {
 
     private String name;
 
-    private int lastName;
+    private int lengthInSec;
+
+    private long singerId;
 
     public TrackDTO() {
     }
@@ -29,11 +33,19 @@ public class TrackDTO {
         this.name = name;
     }
 
-    public int getLastName() {
-        return lastName;
+    public int getLengthInSec() {
+        return lengthInSec;
     }
 
-    public void setLastName(int lastName) {
-        this.lastName = lastName;
+    public void setLengthInSec(int lengthInSec) {
+        this.lengthInSec = lengthInSec;
+    }
+
+    public long getSingerId() {
+        return singerId;
+    }
+
+    public void setSingerId(long singerId) {
+        this.singerId = singerId;
     }
 }

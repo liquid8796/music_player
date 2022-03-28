@@ -1,5 +1,6 @@
 package com.antnest.entity;
 
+import com.fasterxml.jackson.annotation.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -20,7 +21,7 @@ public class Track {
     private String name;
 
     @Column(name = "length_in_sec")
-    private int lastName;
+    private int lengthInSec;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
@@ -32,26 +33,26 @@ public class Track {
     @Column(name = "updated_on")
     private Date updatedOn;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "singer_id")
+    @JsonBackReference
     private User user;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(
             name = "playlist_track",
             joinColumns = @JoinColumn(name = "track_id"),
             inverseJoinColumns = @JoinColumn(name = "playlist_id")
     )
+    @JsonManagedReference
     private List<Playlist> playlists;
 
     public Track() {
     }
 
-    public Track(String name, int lastName, Date createdAt, Date updatedOn) {
+    public Track(String name, int lengthInSec) {
         this.name = name;
-        this.lastName = lastName;
-        this.createdAt = createdAt;
-        this.updatedOn = updatedOn;
+        this.lengthInSec = lengthInSec;
     }
 
     public long getId() {
@@ -70,12 +71,12 @@ public class Track {
         this.name = name;
     }
 
-    public int getLastName() {
-        return lastName;
+    public int getLengthInSec() {
+        return lengthInSec;
     }
 
-    public void setLastName(int lastName) {
-        this.lastName = lastName;
+    public void setLengthInSec(int lengthInSec) {
+        this.lengthInSec = lengthInSec;
     }
 
     public Date getCreatedAt() {
