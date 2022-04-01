@@ -24,9 +24,9 @@ public class PlaylistController {
     @GetMapping("/playlists")
     public List<Playlist> getPlaylists(@RequestParam(defaultValue="0") int page){
 
-        //Pageable paging = PageRequest.of(page, size);
+        Pageable paging = PageRequest.of(page, size);
 
-        Page<Playlist> pagePlaylists = playlistService.findAllPublic(page, size);
+        Page<Playlist> pagePlaylists = playlistService.findAllPublic(paging);
         List<Playlist> playlists = pagePlaylists.getContent();
 
         return playlists;

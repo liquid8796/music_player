@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface PlaylistService {
 
-    public Page<Playlist> findAllPublic(int page, int size);
+    public Page<Playlist> findAllPublic(Pageable pageable);
 
     public List<Playlist> searchPlaylist(String search);
 

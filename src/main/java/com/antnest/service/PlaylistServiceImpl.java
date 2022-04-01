@@ -30,12 +30,15 @@ public class PlaylistServiceImpl implements PlaylistService{
     private TrackRepository trackRepository;
 
     @Override
-    public Page<Playlist> findAllPublic(int page, int size) {
+    public Page<Playlist> findAllPublic(Pageable pageable) {
 
         List<Playlist> allPublic = playlistRepository.findAllPublic();
-        Page<Playlist> result = new PageImpl<>(allPublic);
 
-        return result;
+        int start = Math.min((int)pageable.getOffset(), allPublic.size());
+        int end = Math.min((start + pageable.getPageSize()), allPublic.size());
+        Page<Playlist> pages = new PageImpl<>(allPublic.subList(start, end), pageable, allPublic.size());
+
+        return pages;
     }
 
     @Override
